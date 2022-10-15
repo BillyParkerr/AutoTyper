@@ -1,4 +1,4 @@
-Ever been told that you can't copy paste to a VM due to 'secutiry' reasons?
+Ever been told that you can't copy paste to a VM due to 'security' reasons?
 
 Well now you can!
 
