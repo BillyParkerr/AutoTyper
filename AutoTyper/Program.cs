@@ -5,9 +5,17 @@ namespace AutoTyper;
 
 internal class Program
 {
+    /// <summary>
+    /// This is used to select a process window in which we can type into.
+    /// </summary>
+    /// <param name="hWnd"></param>
+    /// <returns></returns>
     [DllImport("user32.dll")]
     public static extern int SetForegroundWindow(IntPtr hWnd);
 
+    /// <summary>
+    /// Entry point of the program.
+    /// </summary>
     [STAThread]
     public static void Main()
     {
@@ -28,6 +36,11 @@ internal class Program
         }
     }
 
+    /// <summary>
+    /// This method takes the process and text information gathered and uses it to send the text to the given process.
+    /// </summary>
+    /// <param name="process"></param>
+    /// <param name="text"></param>
     private static void TypeToProcess(Process process, string text)
     {
         SetForegroundWindow(process.MainWindowHandle);
@@ -35,6 +48,10 @@ internal class Program
         Console.WriteLine("The text has been sent!\n");
     }
 
+    /// <summary>
+    /// Method which attempts to get the name of the process the user is looking for.
+    /// </summary>
+    /// <returns></returns>
     private static Process GetProcess()
     {
         while (true)
@@ -56,6 +73,10 @@ internal class Program
         }
     }
 
+    /// <summary>
+    /// Method which attempts to get the text which the user will enter.
+    /// </summary>
+    /// <returns></returns>
     private static string GetText()
     {
         while (true)
@@ -67,6 +88,10 @@ internal class Program
                 {
                     return text;
                 }
+            }
+            else
+            {
+                Console.WriteLine("Please enter some text, we cannot enter nothing you know!");
             }
         }
     }
